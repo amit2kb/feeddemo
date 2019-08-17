@@ -1,0 +1,51 @@
+<div [hidden]="submitted">
+    <form #editlivefeedForm="ngForm">
+      
+      
+            <div class="form-group">
+                    <label for="livefeedImage">Feed Image</label>
+                    <input type="text" class="form-control" id="livefeedImage" placeholder="Select Feed Image" 
+                    required
+                    [(ngModel)]="livefeed.livefeedImage" name="livefeedImage" #livefeedImage="ngModel">
+                    <div [hidden]="livefeedImage.valid || livefeedImage.pristine"
+                         class="alert alert-danger">
+                        Image is required
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="livefeedTitle">Feed Title</label>
+                    <input type="text" class="form-control" id="livefeedTitle" placeholder="Give Feed Title"
+                    required
+                    [(ngModel)]="livefeed.livefeedTitle" name="livefeedTitle" #livefeedTitle="ngModel">
+                    <div [hidden]="livefeedTitle.valid || livefeedTitle.pristine"
+                         class="alert alert-danger">
+                        Feed Title is required
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="livefeedDescription">Feed Description</label>
+                    <input type="text" class="form-control" id="livefeedDescription" placeholder="Give Feed Description"
+                    required
+                    [(ngModel)]="livefeed.livefeedDescription" name="livefeedDescription" #livefeedDescription="ngModel">
+                    <div [hidden]="livefeedDescription.valid || livefeedDescription.pristine"
+                         class="alert alert-danger">
+                         Feed Description is required
+                    </div>
+                  </div>
+
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+        <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!editlivefeedForm.form.valid">Update</button>
+        <button type="button" class="btn btn-dark" (click)="delete()">Delete</button>
+	    </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted">
+    <p>{{message}}</p>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    </div>
+</div>
